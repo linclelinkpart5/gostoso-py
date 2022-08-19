@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "3f2b6279cc5db9da9b9b67b5cf8a8c4f70f637fd15b648afce83d66b52d59fdf"
+            "sha256": "905fcdd731ce403d17476cea8c6bd67566a29419fa505bc118016d3c9cd99c76"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,6 +23,14 @@
             ],
             "index": "pypi",
             "version": "==8.1.3"
+        },
+        "pydub": {
+            "hashes": [
+                "sha256:65617e33033874b59d87db603aa1ed450633288aefead953b30bded59cb599a6",
+                "sha256:980a33ce9949cab2a569606b65674d748ecbca4f0796887fd6f46173a7b0d30f"
+            ],
+            "index": "pypi",
+            "version": "==0.25.1"
         }
     },
     "develop": {}
