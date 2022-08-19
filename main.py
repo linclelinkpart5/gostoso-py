@@ -5,6 +5,9 @@ from typing import List, Tuple, Sequence
 
 import click
 
+from pydub import AudioSegment
+from pydub.playback import play
+
 
 def validate_sources(ctx, param, sources: Sequence[Tuple[Path, str]]):
     validated_sources = []
@@ -26,7 +29,8 @@ def validate_sources(ctx, param, sources: Sequence[Tuple[Path, str]]):
 @click.option(
     "--source", "sources", type=(Path, str), multiple=True, callback=validate_sources
 )
-def main(sources: List[Tuple[Path, str]]):
+@click.option('--test', is_flag=True)
+def main(sources: List[Tuple[Path, str]], test: bool):
     feeds = []
 
     for path, cycle in sources:
@@ -52,6 +56,13 @@ def main(sources: List[Tuple[Path, str]]):
                     subpath = subpath_set.pop()
                     any_processed = True
                     print(subpath)
+
+                    song = AudioSegment.from_file(subpath)
+                    if test:
+                        FIVE_SECS = 5000
+                        song = song[:FIVE_SECS]
+
+                    play(song)
                 except KeyError:
                     # Set is now empty.
                     break
